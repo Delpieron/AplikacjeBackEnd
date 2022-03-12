@@ -12,7 +12,7 @@ public class Main3 {
         var index = 0;
         var limit = array.length - 1;
         while (index <= limit) {
-            var point = (int) Math.ceil((index + limit) / 2);
+            var point = (int) Math.ceil((index + limit) / 2.0);
             var entry = array[point];
             if (value > entry) {
                 index = point + 1;
