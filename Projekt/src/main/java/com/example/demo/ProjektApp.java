@@ -4,10 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Lab3Application {
+public class ProjektApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Lab3Application.class, args);
+		SpringApplication.run(ProjektApp.class, args);
 	}
-
 }

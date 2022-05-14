@@ -1,0 +1,6 @@
+1. Postawienie RestApi(SpringBoot)
+2. Wybranie i stowrzenie bazy danych i potrzebnych tabel(users,)
+3. Obsłużenie zapytan POST,GET itp
+4. Stworzenie logowania do aplikacji
+5. Obsłuzenie mikroserwisów(do logowania i do zarzadzania danymi w bazie danych), aby komunikowaly sie miedzy soba
+6. Stworzenie prostego interfejsu UI

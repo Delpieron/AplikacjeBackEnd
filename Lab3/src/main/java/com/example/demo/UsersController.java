@@ -17,18 +17,18 @@ public class UsersController {
 
     @PostConstruct
     private void Create() {
-        users.add(new UserEntity(1L, "Maciek", "maciek@maciek.pl"));
-        users.add(new UserEntity(2L, "Arek", "arek@arek.pl"));
-        users.add(new UserEntity(3L, "Jarek", "jarek@jarek.pl"));
+        users.add(new UserEntity(1, "Maciek", "maciek@maciek.pl"));
+        users.add(new UserEntity(2, "Arek", "arek@arek.pl"));
+        users.add(new UserEntity(3, "Jarek", "jarek@jarek.pl"));
     }
 
 
     @RequestMapping("/users/{id}")
     public UserEntity GetUserById(
-            @PathVariable Long id
+            @PathVariable int id
     ) {
         return users.stream()
-                .filter(userEntity -> userEntity.getId().equals(id))
+                .filter(userEntity -> userEntity.getId() == id)
                 .findFirst()
                 .orElseThrow(() -> new UserNotFoundException("Not found user for given id " + id));
     }
@@ -46,7 +46,7 @@ public class UsersController {
 
     public static <T> List<T> subList(List<T> it, int offset, int limit) {
         if (it == null) {
-            return it;
+            return null;
         }
         if (it.size() <= offset) {
             return Collections.emptyList();
@@ -67,7 +67,7 @@ public class UsersController {
             @PathVariable Long id
     ) {
         UserEntity userEntity = users.stream()
-                .filter(user -> user.getId().equals(id))
+                .filter(user -> user.getId() == id)
                 .findFirst()
                 .orElseThrow(() -> new UserNotFoundException("Not found user for given id " + id));
         return users.remove(userEntity);
@@ -77,7 +77,5 @@ public class UsersController {
     public UserEntity CreateUser(@RequestBody UserEntity userEntity){
         users.add(userEntity);
         return userEntity;
-
     }
-
 }
