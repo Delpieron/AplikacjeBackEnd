@@ -1,7 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
+using StoreApi.Models;
 using StoreApi.Services;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace StoreApi.Controllers
@@ -44,12 +49,24 @@ namespace StoreApi.Controllers
             var result = await _user.editUser(user);
             return Ok(result);
         }
-        [ProducesDefaultResponseType(typeof(User))]
+/*        [ProducesDefaultResponseType(typeof(User))]
         [HttpDelete(ApiRoutes.User.DeleteUserId)]
         public async Task<IActionResult> DeleteUser([FromRoute] int id)
         {
             var result = await _user.deleteUser(id);
             return Ok(result);
+        }*/
+        [HttpPost]
+        [HttpGet]
+        [Route("ApiRoutes.User.DeleteUserId")]
+        public async Task<IActionResult> SendMessage(EmailMessage emailMessage)
+        {
+            var _httpClient = new HttpClient();
+            var company = JsonSerializer.Serialize(emailMessage);
+            var requestContent = new StringContent(company, Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync("https://localhost:44396/api/v1/MailSenderPost", requestContent);
+            response.EnsureSuccessStatusCode();
+            return Ok(response.StatusCode);
         }
     }
 }
