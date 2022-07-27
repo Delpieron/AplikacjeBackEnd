@@ -11,6 +11,7 @@
             public const string AddUserId = Base + "User";
             public const string EditUserId = Base + "User";
             public const string DeleteUserId = Base + "User/{id}";
+            public const string SendMail = Base + "User";
         }
         public static class Permission
         {
