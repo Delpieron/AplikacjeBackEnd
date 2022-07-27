@@ -49,16 +49,16 @@ namespace StoreApi.Controllers
             var result = await _user.editUser(user);
             return Ok(result);
         }
-/*        [ProducesDefaultResponseType(typeof(User))]
+        [ProducesDefaultResponseType(typeof(User))]
         [HttpDelete(ApiRoutes.User.DeleteUserId)]
         public async Task<IActionResult> DeleteUser([FromRoute] int id)
         {
             var result = await _user.deleteUser(id);
             return Ok(result);
-        }*/
+        }
         [HttpPost]
         [HttpGet]
-        [Route("ApiRoutes.User.DeleteUserId")]
+        [Route("ApiRoutes.User.SendMessage")]
         public async Task<IActionResult> SendMessage(EmailMessage emailMessage)
         {
             var _httpClient = new HttpClient();
