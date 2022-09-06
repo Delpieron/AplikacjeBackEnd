@@ -6,10 +6,3 @@ services:
     build:
       context: .
       dockerfile: StoreApi/Dockerfile
-
-  mailsenderapi:
-    image: ${DOCKER_REGISTRY-}mailsenderapi
-    container_name: mail_api
-    build:
-      context: .
-      dockerfile: MailSenderApi/Dockerfile

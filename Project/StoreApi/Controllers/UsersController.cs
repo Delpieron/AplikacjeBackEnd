@@ -63,7 +63,7 @@ namespace StoreApi.Controllers
             var _httpClient = new HttpClient();
             var company = JsonSerializer.Serialize(emailMessage);
             var requestContent = new StringContent(company, Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync("https://localhost:64128/api/v1/MailSenderPost", requestContent);
+            var response = await _httpClient.PostAsync("https://localhost:44326/api/v1/MailSenderPost", requestContent);
             response.EnsureSuccessStatusCode();
             return Ok(response.StatusCode);
         }
